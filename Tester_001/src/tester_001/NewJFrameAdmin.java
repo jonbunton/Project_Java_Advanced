@@ -10,7 +10,7 @@ import javax.swing.DefaultListModel;
 import java.util.Properties;
 /**
  *
- * @author marmar
+ * @author jou
  */
 public class NewJFrameAdmin extends javax.swing.JFrame {
 
