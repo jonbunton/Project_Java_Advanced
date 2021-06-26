@@ -193,6 +193,7 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //unnecessary
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
         NewJFrameLogin frm=new NewJFrameLogin();
@@ -232,6 +233,9 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
                         arr.add(obj);
                         JOptionPane.showMessageDialog(null, "username berhasil dibuat","Success",1);
                         reset();
+                                NewJFrameLogin frm=new NewJFrameLogin();
+                                frm.setVisible(true);
+                                dispose();
                     }
                     else if(checknotelp(notelp)==0)
                     {                        
