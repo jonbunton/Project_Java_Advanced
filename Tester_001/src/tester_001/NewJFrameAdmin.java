@@ -15,8 +15,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author jou
  */
-public class NewJFrameAdmin extends javax.swing.JFrame {
 
+
+public class NewJFrameAdmin extends javax.swing.JFrame {
     DefaultListModel dl;
     DefaultTableModel tm;
 //    Username obj;
@@ -24,7 +25,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     String namaAdmin;
     public NewJFrameAdmin() {
         initComponents();
-        greeting();
+        jLabelGreeting.setText(greeting());
         namaAdmin=NewJFrameLogin.namaUserLoggedIn;
         jLabelUser.setText(namaAdmin);
         this.arr= NewJFrameCreateuser.arr;
@@ -34,24 +35,23 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         dl = new DefaultListModel();
         List01.setModel(dl);
         refreshDataList();
-        refreshTable();
-        
-        
+        refreshTable();       
     }
 
-    public void greeting(){
+    public static String greeting(){
         Date dt = new Date();
         int hours = dt.getHours();
         System.out.println(hours);
         if(hours>=0 && hours<=11){
-            jLabelGreeting.setText("Good Morning,");
+            return "Good Morning,";
         }
         else if(hours>=12 && hours<=17){
-            jLabelGreeting.setText("Good Afternoon,");
+             return"Good Afternoon,";
         }
         else if(hours>=18 && hours<=23){
-            jLabelGreeting.setText("Good Evening,");
+            return "Good Evening,";
         }
+        return null;
     }
     
     

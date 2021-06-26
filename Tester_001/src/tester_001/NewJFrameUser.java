@@ -5,6 +5,8 @@
  */
 package tester_001;
 
+import static tester_001.NewJFrameAdmin.greeting;
+
 /**
  *
  * @author ADMIN
@@ -15,11 +17,17 @@ public class NewJFrameUser extends javax.swing.JFrame {
      * Creates new form NewJFrameUser
      */
     String namaUser;
+    
     public NewJFrameUser() {
         initComponents();
+        jLabelGreeting.setText(NewJFrameAdmin.greeting());
         namaUser=NewJFrameLogin.namaUserLoggedIn;
         jLabelUser.setText(namaUser);
     }
+   
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,32 +40,40 @@ public class NewJFrameUser extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabelUser = new javax.swing.JLabel();
+        jLabelGreeting = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Welcome, ");
+        jLabel1.setText("WELCOME");
 
         jLabelUser.setText("jLabelUser");
+
+        jLabelGreeting.setText("jLabelGreeting");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelGreeting)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabelUser))
-                .addContainerGap(264, Short.MAX_VALUE))
+                    .addComponent(jLabelUser)
+                    .addComponent(jLabelGreeting))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,6 +116,7 @@ public class NewJFrameUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelGreeting;
     private javax.swing.JLabel jLabelUser;
     // End of variables declaration//GEN-END:variables
 }
