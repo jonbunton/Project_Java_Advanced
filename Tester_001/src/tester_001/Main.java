@@ -18,6 +18,7 @@ public class Main {
         System.out.println("test123");
         NewJFrameLogin frm=new NewJFrameLogin();
         frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
     }
     
 }
