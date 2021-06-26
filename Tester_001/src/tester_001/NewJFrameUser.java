@@ -5,8 +5,6 @@
  */
 package tester_001;
 
-import static tester_001.NewJFrameAdmin.greeting;
-
 /**
  *
  * @author ADMIN
@@ -17,17 +15,12 @@ public class NewJFrameUser extends javax.swing.JFrame {
      * Creates new form NewJFrameUser
      */
     String namaUser;
-    
     public NewJFrameUser() {
         initComponents();
-        jLabelGreeting.setText(NewJFrameAdmin.greeting());
         namaUser=NewJFrameLogin.namaUserLoggedIn;
         jLabelUser.setText(namaUser);
+        jLabelGreeting.setText(NewJFrameAdmin.greeting());
     }
-   
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,10 +52,10 @@ public class NewJFrameUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelGreeting)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(4, 4, 4)
                         .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,9 +64,9 @@ public class NewJFrameUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelUser)
                     .addComponent(jLabelGreeting))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
 
         pack();
