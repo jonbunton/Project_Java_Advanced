@@ -5,6 +5,7 @@
  */
 package tester_001;
 
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +17,9 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrameLogin
      */
+    static String namaUserLoggedIn;
     public NewJFrameLogin() {
+        
         initComponents();
         reset();
     }
@@ -25,6 +28,15 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         TFUsername.setText("");
         PFPassword.setText("");
     }
+    
+    public void initCapName(){
+        String initCap = namaUserLoggedIn.substring(0,1);
+        String remaining = namaUserLoggedIn.substring(1);
+        initCap= initCap.toUpperCase();
+        namaUserLoggedIn =initCap+remaining;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,8 +131,10 @@ public class NewJFrameLogin extends javax.swing.JFrame {
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
        String insertedPass = new String (PFPassword.getPassword());
-        if(TFUsername.getText().equals("admin")&& insertedPass.equals("admin"))
+        if((TFUsername.getText().equals("admin")&& insertedPass.equals("admin")) || (TFUsername.getText().equals("jonathan")&& insertedPass.equals("jonathan"))|| (TFUsername.getText().equals("kevin")&& insertedPass.equals("kevin"))||(TFUsername.getText().equals("royce")&& insertedPass.equals("royce")))
        {
+           namaUserLoggedIn=TFUsername.getText();
+           initCapName();
            setVisible(false);
            NewJFrameAdmin frm=new NewJFrameAdmin();
            frm.setVisible(true);
@@ -130,12 +144,15 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         else{
             for (int i = 0; i < NewJFrameCreateuser.arr.size() ; i++) {
                 if(NewJFrameCreateuser.arr.get(i).getUser().equals(TFUsername.getText())&& NewJFrameCreateuser.arr.get(i).getPass().equals(insertedPass)){
+                    namaUserLoggedIn= NewJFrameCreateuser.arr.get(i).getNama();
+                    initCapName();
                     setVisible(false);
-                    NewJFrameAdmin frm=new NewJFrameAdmin();
+                    NewJFrameUser frm=new NewJFrameUser();
                     frm.setVisible(true);
                     frm.setLocationRelativeTo(null);
+                    
                     return;
-                } 
+                }
             }
         }
         JOptionPane.showMessageDialog(null,"username/password salah");

@@ -5,9 +5,12 @@
  */
 package tester_001;
 
+import java.util.Date;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import java.util.Properties;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author jou
@@ -15,10 +18,15 @@ import java.util.Properties;
 public class NewJFrameAdmin extends javax.swing.JFrame {
 
     DefaultListModel dl;
+    DefaultTableModel tm;
 //    Username obj;
     ArrayList<Username> arr;
+    String namaAdmin;
     public NewJFrameAdmin() {
         initComponents();
+        greeting();
+        namaAdmin=NewJFrameLogin.namaUserLoggedIn;
+        jLabelUser.setText(namaAdmin);
         this.arr= NewJFrameCreateuser.arr;
 //        obj=new Username();
 //        obj.getArr();
@@ -26,7 +34,27 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         dl = new DefaultListModel();
         List01.setModel(dl);
         refreshDataList();
+        refreshTable();
+        
+        
     }
+
+    public void greeting(){
+        Date dt = new Date();
+        int hours = dt.getHours();
+        System.out.println(hours);
+        if(hours>=0 && hours<=11){
+            jLabelGreeting.setText("Good Morning,");
+        }
+        else if(hours>=12 && hours<=17){
+            jLabelGreeting.setText("Good Afternoon,");
+        }
+        else if(hours>=18 && hours<=23){
+            jLabelGreeting.setText("Good Evening,");
+        }
+    }
+    
+    
     public void refreshDataList()
     {
         dl.clear();
@@ -37,6 +65,19 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 //        for (int i = arr.size()-1; i >=0 ; i--) {
 //            dl.addElement(arr.get(i));
 //        }
+    }
+    
+    public void refreshTable(){
+        String[] title = {"Username", "Nama", "Alamat", "Nomor Telepon"};
+        tm = new DefaultTableModel(title, 0);
+        jTable1.setModel(tm);
+        jTable1.setDefaultEditor(Object.class, null);
+        for (int i = 0; i < arr.size(); i++) {
+            Object[] obj = {
+                arr.get(i).getUser(), arr.get(i).getNama(), arr.get(i).getAlamat(), arr.get(i).getNohp()
+            };
+            tm.addRow(obj);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,10 +92,15 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         List01 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabelUser = new javax.swing.JLabel();
+        jButtonLogout = new javax.swing.JButton();
+        jLabelGreeting = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("HALO ADMIN");
+        jLabel1.setText("WELCOME");
 
         List01.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -65,32 +111,95 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         jLabel2.setText("List User");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jLabelUser.setText("jLabelUser");
+
+        jButtonLogout.setText("LOGOUT");
+        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLogoutActionPerformed(evt);
+            }
+        });
+
+        jLabelGreeting.setText("jLabelGreeting");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelGreeting)
+                                .addComponent(jLabel1))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(509, 509, 509)
+                            .addComponent(jButtonLogout))))
+                .addContainerGap(704, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGreeting)
+                    .addComponent(jLabelUser)
+                    .addComponent(jButtonLogout))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
+        // TODO add your handling code here:
+        Object[] options = {"Cancel",
+                    "Log out"};
+        int n = JOptionPane.showOptionDialog(this,
+            "You will be returned to login screen.",
+            "Log out",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.WARNING_MESSAGE,
+            null,     
+            options,  
+            options[0]); 
+        if (n==1){
+            dispose();
+            NewJFrameLogin frm=new NewJFrameLogin();
+            frm.setVisible(true);
+            frm.setLocationRelativeTo(null);
+        }
+        
+    }//GEN-LAST:event_jButtonLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,8 +238,13 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> List01;
+    private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelGreeting;
+    private javax.swing.JLabel jLabelUser;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
