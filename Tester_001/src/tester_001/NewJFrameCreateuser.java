@@ -18,6 +18,9 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
     public NewJFrameCreateuser() {
         initComponents();
         reset();
+        arr.add(new Username("test001","test001","test001","jl 001",0111));
+        arr.add(new Username("test002","test002","test002","jl 002",0222));
+        arr.add(new Username("test003","test003","test003","jl 003",0333));
     }
 
     public void reset()
@@ -82,7 +85,7 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         TFNama = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("USERNAME");
 

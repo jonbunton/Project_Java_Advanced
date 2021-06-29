@@ -39,7 +39,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         TFUsername = new javax.swing.JTextField();
-        TFPassword = new javax.swing.JTextField();
+        TFPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +63,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
 
         TFUsername.setText("jTextField1");
 
-        TFPassword.setText("jTextField2");
+        TFPassword.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,8 +110,6 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-//        new NewJFrameLogin().setVisible(false);
         setVisible(false);
         NewJFrameCreateuser frm02=new NewJFrameCreateuser();
         frm02.setVisible(true);
@@ -119,7 +117,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if(TFUsername.getText().equals("admin")&& TFPassword.getText().equals("admin"))
+       if(TFUsername.getText().equalsIgnoreCase("admin")&& TFPassword.getText().equalsIgnoreCase("admin"))
        {
            setVisible(false);
            NewJFrameAdmin frm=new NewJFrameAdmin();
@@ -166,7 +164,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TFPassword;
+    private javax.swing.JPasswordField TFPassword;
     private javax.swing.JTextField TFUsername;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

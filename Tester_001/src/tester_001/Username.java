@@ -19,21 +19,7 @@ public class Username {
     private String nama;
     private String alamat;
     private long nohp;
-//    ArrayList<Username>arr=new ArrayList<Username>();
-//
-//    public ArrayList<Username> getArr() {
-//        return arr;
-//    }
-//
-//    public void setArr(ArrayList<Username> arr) {
-//        this.arr = arr;
-//    }
-//    public void inputarr(int i,Username us)
-//    {
-//        if(i==100)arr.add(us);
-//    }
     public Username(String user, String pass, String nama, String alamat, long nohp) {
-//        arr=new ArrayList<Username>();
         this.id=index;
         this.user = user;
         this.pass = pass;
@@ -43,7 +29,6 @@ public class Username {
         index++;
     }
     public Username() {
-//        arr=new ArrayList<Username>();
         this.id=index;
         this.user = user;
         this.pass = pass;
@@ -101,6 +86,6 @@ public class Username {
     }
     @Override
     public String toString(){
-        return this.id+"-"+this.user+"-"+this.nama+"-"+this.alamat+"-"+this.nohp;
+        return this.id+"-"+this.user+"-"+this.nama+"-"+this.nohp;
     }
 }
