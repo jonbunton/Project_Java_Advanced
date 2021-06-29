@@ -5,6 +5,7 @@
  */
 package tester_001;
 
+import java.util.Date;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import java.util.Properties;
@@ -20,7 +21,6 @@ import javax.swing.table.DefaultTableModel;
  * @author jou
  */
 public class NewJFrameAdmin extends javax.swing.JFrame {
-
     DefaultListModel dl;
     DefaultComboBoxModel dc;
     DefaultTableModel tm;
@@ -50,6 +50,8 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         TFJumlahB.setText("");
         TFCariUser.setText("");
     }
+    
+    
     public void refreshDataList()
     {
         dl.clear();
@@ -153,7 +155,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("HALO ADMIN");
+        jLabel1.setText("WELCOME");
 
         List01.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -234,12 +236,36 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         TFCariUser.setText("jTextField1");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jLabelUser.setText("jLabelUser");
+
+        jButtonLogout.setText("LOGOUT");
+        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLogoutActionPerformed(evt);
+            }
+        });
+
+        jLabelGreeting.setText("jLabelGreeting");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
