@@ -5,7 +5,6 @@
  */
 package tester_001;
 
-import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,9 +16,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrameLogin
      */
-    static String namaUserLoggedIn;
     public NewJFrameLogin() {
-        
         initComponents();
         reset();
     }
@@ -28,15 +25,6 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         TFUsername.setText("");
         TFPassword.setText("");
     }
-    
-    public void initCapName(){
-        String initCap = namaUserLoggedIn.substring(0,1);
-        String remaining = namaUserLoggedIn.substring(1);
-        initCap= initCap.toUpperCase();
-        namaUserLoggedIn =initCap+remaining;
-    }
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,8 +34,8 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonLogIn = new javax.swing.JButton();
-        jButtonCreateNewUser = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         TFUsername = new javax.swing.JTextField();
@@ -55,17 +43,17 @@ public class NewJFrameLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonLogIn.setText("LOG IN");
-        jButtonLogIn.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("LOG IN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogInActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jButtonCreateNewUser.setText("CREATE NEW USER");
-        jButtonCreateNewUser.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("CREATE NEW USER");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCreateNewUserActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -85,9 +73,9 @@ public class NewJFrameLogin extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonLogIn)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addComponent(jButtonCreateNewUser))
+                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -95,7 +83,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TFUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                            .addComponent(PFPassword))
+                            .addComponent(TFPassword))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -109,11 +97,11 @@ public class NewJFrameLogin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(PFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonLogIn)
-                    .addComponent(jButtonCreateNewUser))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(32, 32, 32))
         );
 
@@ -121,44 +109,24 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
         NewJFrameCreateuser frm02=new NewJFrameCreateuser();
         frm02.setVisible(true);
-        frm02.setLocationRelativeTo(null);
         
-    }                                                    
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        if(TFUsername.getText().equalsIgnoreCase("admin")&& TFPassword.getText().equalsIgnoreCase("admin"))
        {
-           namaUserLoggedIn=TFUsername.getText();
-           initCapName();
            setVisible(false);
            NewJFrameAdmin frm=new NewJFrameAdmin();
            frm.setVisible(true);
-           frm.setLocationRelativeTo(null);
-           return;
        }
-        else{
-            for (int i = 0; i < NewJFrameCreateuser.arr.size() ; i++) {
-                if(NewJFrameCreateuser.arr.get(i).getUser().equals(TFUsername.getText())&& NewJFrameCreateuser.arr.get(i).getPass().equals(insertedPass)){
-                    namaUserLoggedIn= NewJFrameCreateuser.arr.get(i).getNama();
-                    initCapName();
-                    setVisible(false);
-                    NewJFrameUser frm=new NewJFrameUser();
-                    frm.setVisible(true);
-                    frm.setLocationRelativeTo(null);
-                    
-                    return;
-                }
-            }
-        }
-        JOptionPane.showMessageDialog(null,"username/password salah");
-       
-    
+       else JOptionPane.showMessageDialog(null,"username/password salah");
+           
         
-    }                                            
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,8 +166,8 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField TFPassword;
     private javax.swing.JTextField TFUsername;
-    private javax.swing.JButton jButtonCreateNewUser;
-    private javax.swing.JButton jButtonLogIn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

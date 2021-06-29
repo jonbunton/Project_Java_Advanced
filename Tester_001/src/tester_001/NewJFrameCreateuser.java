@@ -26,8 +26,8 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
     public void reset()
     {
         TFUsername.setText("");
-        jPasswordField1.setText("");
-        jPasswordField2.setText("");
+        TFPassword.setText("");
+        TFConfirm.setText("");
         TFNotelp.setText("");
         TAAlamat.setText("");
         TFNama.setText("");
@@ -73,17 +73,17 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         TFUsername = new javax.swing.JTextField();
-        jButtonCreate = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        TFPassword = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TAAlamat = new javax.swing.JTextArea();
+        TFConfirm = new javax.swing.JTextField();
         TFNotelp = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         TFNama = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,12 +95,14 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
 
         TFUsername.setText("jTextField1");
 
-        jButtonCreate.setText("CREATE");
-        jButtonCreate.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("CREATE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCreateActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
+
+        TFPassword.setText("jTextField2");
 
         jButton2.setText("BACK To LOGIN PAGE");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +116,8 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
         TAAlamat.setColumns(20);
         TAAlamat.setRows(5);
         jScrollPane1.setViewportView(TAAlamat);
+
+        TFConfirm.setText("jTextField1");
 
         TFNotelp.setText("jTextField2");
 
@@ -136,18 +140,21 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TFNotelp)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)
-                            .addComponent(TFUsername)
-                            .addComponent(TFNama))
-                        .addComponent(jButtonCreate, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jPasswordField1)
-                    .addComponent(jPasswordField2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TFNotelp)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1)
+                                .addComponent(TFUsername)
+                                .addComponent(TFNama))
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TFConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -160,11 +167,11 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TFConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -179,7 +186,7 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
                             .addComponent(TFNotelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonCreate)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(25, 25, 25))
@@ -189,7 +196,6 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
         NewJFrameLogin frm=new NewJFrameLogin();
@@ -197,10 +203,8 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButtonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateActionPerformed
-        String pass =  new String(jPasswordField1.getPassword());
-        String confirmPass =  new String(jPasswordField2.getPassword());
-        if(TFUsername.getText().equals("")||TFNama.getText().equals("") ||pass.equals("")||confirmPass.equals("")||TFNotelp.getText().equals("")||TAAlamat.getText().equals(""))
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(TFUsername.getText().equals("")||TFNama.getText().equals("") ||TFPassword.getText().equals("")||TFConfirm.getText().equals("")||TFNotelp.getText().equals("")||TAAlamat.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "One or more column is empty", "empty Column",1);
         }
@@ -214,9 +218,9 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
             }
             else
             {
-//                String password=TFPassword.getText();
-//                String confirm=TFConfirm.getText();
-                if(pass.equals(confirmPass))
+                String password=TFPassword.getText();
+                String confirm=TFConfirm.getText();
+                if(password.equals(confirm))
                 {
                     String nama=TFNama.getText();
                     String alamat=TAAlamat.getText();
@@ -225,15 +229,12 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
                     {
                         long telp=Long.parseLong(notelp);
                         Username obj;
-                        obj=new Username(Username, pass, nama, alamat, telp);
+                        obj=new Username(Username, password, nama, alamat, telp);
 //                        check=100;
 //                        obj.inputarr(check,obj);
                         arr.add(obj);
                         JOptionPane.showMessageDialog(null, "username berhasil dibuat","Success",1);
                         reset();
-                                NewJFrameLogin frm=new NewJFrameLogin();
-                                frm.setVisible(true);
-                                dispose();
                     }
                     else if(checknotelp(notelp)==0)
                     {                        
@@ -248,14 +249,14 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Passwords didn't match","Try again ",1);
-                    jPasswordField1.setText("");
-                    jPasswordField2.setText("");
+                    TFPassword.setText("");
+                    TFConfirm.setText("");
                 }
             }
             
         }
         
-    }//GEN-LAST:event_jButtonCreateActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,19 +295,19 @@ public class NewJFrameCreateuser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea TAAlamat;
+    private javax.swing.JTextField TFConfirm;
     private javax.swing.JTextField TFNama;
     private javax.swing.JTextField TFNotelp;
+    private javax.swing.JTextField TFPassword;
     private javax.swing.JTextField TFUsername;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonCreate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
