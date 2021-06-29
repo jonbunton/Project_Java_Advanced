@@ -26,7 +26,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     public void reset()
     {
         TFUsername.setText("");
-        PFPassword.setText("");
+        TFPassword.setText("");
     }
     
     public void initCapName(){
@@ -121,15 +121,15 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         setVisible(false);
         NewJFrameCreateuser frm02=new NewJFrameCreateuser();
         frm02.setVisible(true);
         frm02.setLocationRelativeTo(null);
         
-    }//GEN-LAST:event_jButtonCreateNewUserActionPerformed
+    }                                                    
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
        if(TFUsername.getText().equalsIgnoreCase("admin")&& TFPassword.getText().equalsIgnoreCase("admin"))
        {
            namaUserLoggedIn=TFUsername.getText();
@@ -158,7 +158,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
        
     
         
-    }//GEN-LAST:event_jButtonLogInActionPerformed
+    }                                            
 
     /**
      * @param args the command line arguments
