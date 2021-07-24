@@ -5,6 +5,8 @@
  */
 package tester_001;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +20,18 @@ public class NewJFrameLogin extends javax.swing.JFrame {
      */
     public NewJFrameLogin() {
         initComponents();
+//        ImageIcon pic = new ImageIcon("src/tester_001/lock.jpg");
+//        Image icon = pic.getImage();
+//        Image real = icon.getScaledInstance(25, 30, java.awt.Image.SCALE_SMOOTH);
+//        pic = new ImageIcon(real);
+//        pass.setIcon(pic);
+        pass.setText("");
+//        ImageIcon pic2 = new ImageIcon("src/tester_001/user.png");
+//        Image icon2 = pic2.getImage();
+//        Image real2 = icon2.getScaledInstance(25, 30, java.awt.Image.SCALE_SMOOTH);
+//        pic2 = new ImageIcon(real2);
+//        id.setIcon(pic2);
+        id.setText("");
         reset();
     }
     public void reset()
@@ -35,61 +49,50 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         TFUsername = new javax.swing.JTextField();
         TFPassword = new javax.swing.JPasswordField();
+        id = new javax.swing.JLabel();
+        pass = new javax.swing.JLabel();
+        BackGroundLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("LOG IN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 230, -1));
 
-        jLabel1.setText("ID");
-
-        jLabel2.setText("PASSWORD");
-
+        TFUsername.setBackground(new java.awt.Color(0, 0, 0));
+        TFUsername.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        TFUsername.setForeground(new java.awt.Color(255, 255, 255));
         TFUsername.setText("jTextField1");
+        getContentPane().add(TFUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, -1));
 
+        TFPassword.setBackground(new java.awt.Color(0, 0, 0));
+        TFPassword.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        TFPassword.setForeground(new java.awt.Color(255, 255, 255));
         TFPassword.setText("jPasswordField1");
+        TFPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFPasswordActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TFPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 190, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(TFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TFUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(TFUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
+        id.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/user.png"))); // NOI18N
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
+
+        pass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/lock.jpg"))); // NOI18N
+        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, -1));
+
+        BackGroundLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/BackgroundLogin.jpg"))); // NOI18N
+        getContentPane().add(BackGroundLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -106,6 +109,10 @@ public class NewJFrameLogin extends javax.swing.JFrame {
            
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TFPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,10 +150,11 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BackGroundLogin;
     private javax.swing.JPasswordField TFPassword;
     private javax.swing.JTextField TFUsername;
+    private javax.swing.JLabel id;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel pass;
     // End of variables declaration//GEN-END:variables
 }

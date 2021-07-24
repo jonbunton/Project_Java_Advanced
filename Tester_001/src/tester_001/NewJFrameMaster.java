@@ -145,26 +145,32 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         logo.setText("LOGO");
         getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel2.setText("Nama");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
-        TFHarga.setBackground(new java.awt.Color(255, 204, 153));
+        TFHarga.setBackground(new java.awt.Color(0, 0, 0));
+        TFHarga.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        TFHarga.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(TFHarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 310, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel3.setText("Harga");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
-        TFId.setBackground(new java.awt.Color(255, 204, 153));
+        TFId.setBackground(new java.awt.Color(0, 0, 0));
+        TFId.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        TFId.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(TFId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 310, -1));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel4.setText("Deskripsi");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
-        TA.setBackground(new java.awt.Color(255, 204, 153));
+        TA.setBackground(new java.awt.Color(0, 0, 0));
         TA.setColumns(20);
+        TA.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        TA.setForeground(new java.awt.Color(255, 255, 255));
         TA.setRows(5);
         jScrollPane1.setViewportView(TA);
 
@@ -200,10 +206,12 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         });
         getContentPane().add(BDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 100, -1));
 
-        TFNama.setBackground(new java.awt.Color(255, 204, 153));
+        TFNama.setBackground(new java.awt.Color(0, 0, 0));
+        TFNama.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        TFNama.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(TFNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 310, -1));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel1.setText("ID");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
@@ -258,7 +266,7 @@ public class NewJFrameMaster extends javax.swing.JFrame {
             }
             
         }else{
-            JOptionPane.showMessageDialog(null, "ada column yang kosong","WARNING!",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ada Column Yang Kosong","WARNING!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_BAddActionPerformed
 

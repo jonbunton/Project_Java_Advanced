@@ -83,7 +83,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         LabelKeterangan.setText(getKeteranganSampah(0));
         LabelKatDesc.setText(CBCategorySampah.getSelectedItem().toString());
         LabelHargaKat.setText(arrsampah.get(0).getHarga()+"");
-        LabelIcon.setIcon(new ImageIcon("src/tester_001/0.jpg"));
+        LabelIcon.setIcon(new ImageIcon("src/tester_001/0.png"));
         reset();
     }
     public void reset()
@@ -185,6 +185,16 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
             return false;
         }
     }
+    public int getIndexArr(String value){
+        int temp=-1;
+        for (int i = 0; i < arrsampah.size(); i++) {
+            if(value.equals(arrsampah.get(i).getKategori())){
+                temp=i;
+                break;
+            }
+        }
+        return temp;
+    }
     public String PassingData(){
         String temp_id="";
         String temp_kategori=CBCategorySampah.getSelectedItem().toString();
@@ -227,20 +237,27 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         TFCustomer = new javax.swing.JTextField();
         BAdd = new javax.swing.JButton();
         BSave = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        LabelHargaKat = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        LabelKeterangan = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
-        LabelIcon = new javax.swing.JLabel();
-        LabelKatDesc = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         LOGO = new javax.swing.JLabel();
         BNewCategory = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        LabelHargaKat = new javax.swing.JLabel();
+        LabelKatDesc = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        LabelKeterangan = new javax.swing.JTextArea();
+        LabelIcon = new javax.swing.JLabel();
+        UserIcon = new javax.swing.JLabel();
+        CategoryIcon = new javax.swing.JLabel();
+        WeightIcon = new javax.swing.JLabel();
+        PriceIcon = new javax.swing.JLabel();
+        SubTotalIcon = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -253,17 +270,20 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("HALO ADMIN");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 220, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
+        CBCategorySampah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         CBCategorySampah.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CBCategorySampah.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CBCategorySampahItemStateChanged(evt);
             }
         });
-        getContentPane().add(CBCategorySampah, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 296, 159, -1));
+        getContentPane().add(CBCategorySampah, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 346, 159, 30));
 
+        TableBarang.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TableBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -278,61 +298,78 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         TableBarang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(TableBarang);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 583, 820, 178));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 601, 820, 160));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel3.setText("LIST SAMPAH");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 550, -1, -1));
 
+        BLogOut.setBackground(new java.awt.Color(0, 0, 0));
+        BLogOut.setForeground(new java.awt.Color(255, 255, 255));
         BLogOut.setText("LOG OUT");
         BLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BLogOutActionPerformed(evt);
             }
         });
-        getContentPane().add(BLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 130, -1));
+        getContentPane().add(BLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 130, -1));
 
-        jLabel4.setText("Kategori :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 299, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("CATEGORY");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
 
-        jLabel12.setText("Berat : ");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 341, -1, -1));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel12.setText("WEIGHT");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
 
+        SBerat.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         SBerat.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 SBeratStateChanged(evt);
             }
         });
-        getContentPane().add(SBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 338, 60, -1));
+        getContentPane().add(SBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 406, 80, 30));
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel13.setText("Kg");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 341, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, -1, -1));
 
-        jLabel14.setText("Total : ");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 382, -1, -1));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel14.setText("TOTAL");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, -1, -1));
 
+        LabelTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LabelTotal.setText("LabelTotal");
-        getContentPane().add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 382, -1, -1));
+        getContentPane().add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Subtotal :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 547, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 570, -1, -1));
 
+        LabelSub.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LabelSub.setText("LabelSub");
-        getContentPane().add(LabelSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 547, -1, -1));
+        getContentPane().add(LabelSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, -1, -1));
 
-        jLabel5.setText("Customer :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 257, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setText("CUSTOMER");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
+        TFCustomer.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TFCustomer.setText("TFCustomer");
-        getContentPane().add(TFCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 254, 158, -1));
+        getContentPane().add(TFCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 286, 160, 30));
 
+        BAdd.setBackground(new java.awt.Color(0, 0, 0));
+        BAdd.setForeground(new java.awt.Color(255, 255, 255));
         BAdd.setText("Add");
         BAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BAddActionPerformed(evt);
             }
         });
-        getContentPane().add(BAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 420, 243, -1));
+        getContentPane().add(BAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 320, -1));
 
+        BSave.setBackground(new java.awt.Color(0, 0, 0));
+        BSave.setForeground(new java.awt.Color(255, 255, 255));
         BSave.setText("Save");
         BSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -341,106 +378,20 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(BSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 770, 820, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel6.setText("Kategori");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
-        jLabel7.setText("Keterangan");
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel11.setText("Harga per Kg :");
-
-        LabelHargaKat.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        LabelHargaKat.setText("0");
-
-        LabelKeterangan.setColumns(20);
-        LabelKeterangan.setRows(5);
-        jScrollPane1.setViewportView(LabelKeterangan);
-
-        jPanel1.setBackground(new java.awt.Color(102, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 100));
-
-        LabelIcon.setText("LabelIcon");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(LabelIcon)
-                .addGap(0, 32, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(LabelIcon)
-                .addGap(0, 80, Short.MAX_VALUE))
-        );
-
-        LabelKatDesc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LabelKatDesc.setText("LabelKatDesc");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(147, 147, 147)
-                                .addComponent(jScrollPane1))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(LabelHargaKat))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(15, 15, 15))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(LabelKatDesc)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addGap(112, 112, 112))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelKatDesc)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelHargaKat))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 240, 460, -1));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setText("Deskripsi");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("TRANSACTION HISTOY");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 810, 220, -1));
 
         LOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/kaumrombeng.png"))); // NOI18N
         getContentPane().add(LOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 320, -1));
 
+        BNewCategory.setBackground(new java.awt.Color(0, 0, 0));
+        BNewCategory.setForeground(new java.awt.Color(255, 255, 255));
         BNewCategory.setText("Add New Category");
         BNewCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -448,6 +399,66 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BNewCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 470, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        jLabel11.setText("Harga per Kg :");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, -1, -1));
+
+        LabelHargaKat.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        LabelHargaKat.setText("0");
+        getContentPane().add(LabelHargaKat, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, -1, -1));
+
+        LabelKatDesc.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        LabelKatDesc.setText("LabelKatDesc");
+        getContentPane().add(LabelKatDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setText("Kategori :");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setText("Keterangan");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, -1, -1));
+
+        LabelKeterangan.setColumns(20);
+        LabelKeterangan.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        LabelKeterangan.setRows(5);
+        jScrollPane1.setViewportView(LabelKeterangan);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 283, 168));
+
+        LabelIcon.setText("LabelIcon");
+        getContentPane().add(LabelIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
+
+        UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/anonymoususer.png"))); // NOI18N
+        getContentPane().add(UserIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+
+        CategoryIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/garbageIcon.png"))); // NOI18N
+        getContentPane().add(CategoryIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+
+        WeightIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/weight01.png"))); // NOI18N
+        getContentPane().add(WeightIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
+
+        PriceIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/price.png"))); // NOI18N
+        getContentPane().add(PriceIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
+
+        SubTotalIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/subtotal.png"))); // NOI18N
+        getContentPane().add(SubTotalIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setText("Rp.");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 570, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel10.setText("Rp.");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel15.setText("Rp.");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/BackgroundAdmin.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 840));
 
         pack();
         setLocationRelativeTo(null);
@@ -478,10 +489,11 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BLogOutActionPerformed
 
     private void CBCategorySampahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBCategorySampahItemStateChanged
-        int idx=CBCategorySampah.getSelectedIndex();
-        int index=CBCategorySampah.getSelectedIndex();
-        if(checkIcon(index)){
-            LabelIcon.setIcon(new ImageIcon("src/tester_001/"+ CBCategorySampah.getSelectedIndex()+".jpg"));
+        String item=CBCategorySampah.getSelectedItem().toString();
+        int idx=getIndexArr(item);
+        int id=arrsampah.get(idx).getId();
+        if(checkIcon(id)){
+            LabelIcon.setIcon(new ImageIcon("src/tester_001/"+ CBCategorySampah.getSelectedIndex()+".png"));
         }else LabelIcon.setIcon(new ImageIcon("src/tester_001/"+"default"+".png"));
         LabelHargaKat.setText(arrsampah.get(idx).getHarga()+"");
         LabelKatDesc.setText(CBCategorySampah.getSelectedItem().toString());
@@ -506,7 +518,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         int index=CBCategorySampah.getSelectedIndex();
         if(checkSpinner(berat)){
             String icon;
-            if(checkIcon(index))icon="src/tester_001/"+CBCategorySampah.getSelectedIndex()+".jpg";
+            if(checkIcon(index))icon="src/tester_001/"+CBCategorySampah.getSelectedIndex()+".png";
             else icon="src/tester_001/default.png";
             int subtotal = harga * berat;
 
@@ -615,7 +627,9 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BLogOut;
     private javax.swing.JButton BNewCategory;
     private javax.swing.JButton BSave;
+    private javax.swing.JLabel Background;
     private javax.swing.JComboBox<String> CBCategorySampah;
+    private javax.swing.JLabel CategoryIcon;
     private javax.swing.JLabel LOGO;
     private javax.swing.JLabel LabelHargaKat;
     private javax.swing.JLabel LabelIcon;
@@ -623,15 +637,21 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JTextArea LabelKeterangan;
     private javax.swing.JLabel LabelSub;
     private javax.swing.JLabel LabelTotal;
+    private javax.swing.JLabel PriceIcon;
     private javax.swing.JSpinner SBerat;
+    private javax.swing.JLabel SubTotalIcon;
     private javax.swing.JTextField TFCustomer;
     private javax.swing.JTable TableBarang;
+    private javax.swing.JLabel UserIcon;
+    private javax.swing.JLabel WeightIcon;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -639,8 +659,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
