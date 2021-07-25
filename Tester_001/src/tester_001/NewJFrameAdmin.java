@@ -257,6 +257,8 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        PriceIcon1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -347,7 +349,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 570, -1, -1));
 
         LabelSub.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LabelSub.setText("LabelSub");
+        LabelSub.setText("0");
         getContentPane().add(LabelSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -398,7 +400,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
                 BNewCategoryActionPerformed(evt);
             }
         });
-        getContentPane().add(BNewCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 470, -1));
+        getContentPane().add(BNewCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 460, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel11.setText("Harga per Kg :");
@@ -406,7 +408,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         LabelHargaKat.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         LabelHargaKat.setText("0");
-        getContentPane().add(LabelHargaKat, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, -1, -1));
+        getContentPane().add(LabelHargaKat, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, -1, -1));
 
         LabelKatDesc.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         LabelKatDesc.setText("LabelKatDesc");
@@ -418,14 +420,14 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setText("Keterangan");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, -1, -1));
 
         LabelKeterangan.setColumns(20);
         LabelKeterangan.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
         LabelKeterangan.setRows(5);
         jScrollPane1.setViewportView(LabelKeterangan);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 283, 168));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 283, 180));
 
         LabelIcon.setText("LabelIcon");
         getContentPane().add(LabelIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
@@ -440,7 +442,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         getContentPane().add(WeightIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         PriceIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/price.png"))); // NOI18N
-        getContentPane().add(PriceIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
+        getContentPane().add(PriceIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, -1, -1));
 
         SubTotalIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/subtotal.png"))); // NOI18N
         getContentPane().add(SubTotalIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, -1, -1));
@@ -451,11 +453,17 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel10.setText("Rp.");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel15.setText("Rp.");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
+
+        PriceIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/price.png"))); // NOI18N
+        getContentPane().add(PriceIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/checklist.png"))); // NOI18N
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, -1, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/BackgroundAdmin.jpg"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 840));
@@ -638,6 +646,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel LabelSub;
     private javax.swing.JLabel LabelTotal;
     private javax.swing.JLabel PriceIcon;
+    private javax.swing.JLabel PriceIcon1;
     private javax.swing.JSpinner SBerat;
     private javax.swing.JLabel SubTotalIcon;
     private javax.swing.JTextField TFCustomer;
@@ -652,6 +661,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

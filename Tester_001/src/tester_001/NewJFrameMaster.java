@@ -132,6 +132,10 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         BDelete = new javax.swing.JButton();
         TFNama = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        IconID = new javax.swing.JLabel();
+        IconNama = new javax.swing.JLabel();
+        IconHarga = new javax.swing.JLabel();
+        IconDeskripsi = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -147,21 +151,21 @@ public class NewJFrameMaster extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel2.setText("Nama");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         TFHarga.setBackground(new java.awt.Color(0, 0, 0));
         TFHarga.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         TFHarga.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(TFHarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 310, -1));
+        getContentPane().add(TFHarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 310, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel3.setText("Harga");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
         TFId.setBackground(new java.awt.Color(0, 0, 0));
         TFId.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         TFId.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(TFId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 310, -1));
+        getContentPane().add(TFId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 310, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel4.setText("Deskripsi");
@@ -209,11 +213,23 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         TFNama.setBackground(new java.awt.Color(0, 0, 0));
         TFNama.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         TFNama.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(TFNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 310, -1));
+        getContentPane().add(TFNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 310, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel1.setText("ID");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        IconID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/id.png"))); // NOI18N
+        getContentPane().add(IconID, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, -1, -1));
+
+        IconNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/garbageIcon.png"))); // NOI18N
+        getContentPane().add(IconNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
+
+        IconHarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/price.png"))); // NOI18N
+        getContentPane().add(IconHarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, -1));
+
+        IconDeskripsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/checklist.png"))); // NOI18N
+        getContentPane().add(IconDeskripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, -1, -1));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/background2.jpg"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -378,6 +394,10 @@ public class NewJFrameMaster extends javax.swing.JFrame {
     private javax.swing.JButton BDelete;
     private javax.swing.JButton BEdit;
     private javax.swing.JLabel BG;
+    private javax.swing.JLabel IconDeskripsi;
+    private javax.swing.JLabel IconHarga;
+    private javax.swing.JLabel IconID;
+    private javax.swing.JLabel IconNama;
     private javax.swing.JTextArea TA;
     private javax.swing.JTextField TFHarga;
     private javax.swing.JTextField TFId;
