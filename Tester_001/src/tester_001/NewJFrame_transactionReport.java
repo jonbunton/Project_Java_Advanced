@@ -101,6 +101,7 @@ public class NewJFrame_transactionReport extends javax.swing.JFrame {
             
             if(jDateChooser4.getDate().getTime()<=h.getWaktutransaksi().getTime()&&jDateChooser3.getDate().getTime()>=h.getWaktutransaksi().getTime()){
                 dt.addRow(h.getObj());
+                System.out.println("test");
             }
         }
         jTable1.setDefaultEditor(Object.class, null);
@@ -256,11 +257,11 @@ public class NewJFrame_transactionReport extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jTextField_transactionID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_filter))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addGap(110, 110, 110))
+                .addContainerGap())
         );
 
         pack();

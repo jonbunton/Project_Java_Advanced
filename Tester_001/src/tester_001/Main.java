@@ -15,7 +15,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        NewJFrame_transactionReport frm=new NewJFrame_transactionReport();
+//        NewJFrame_transactionReport frm=new NewJFrame_transactionReport();
+//        frm.setVisible(true);
+        
+        NewJFrameLogin frm=new NewJFrameLogin();
         frm.setVisible(true);
     }
     
