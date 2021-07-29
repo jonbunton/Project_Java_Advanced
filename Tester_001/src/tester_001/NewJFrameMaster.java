@@ -147,7 +147,7 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setText("LOGO");
-        getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, -1, -1));
+        getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel2.setText("Nama");
