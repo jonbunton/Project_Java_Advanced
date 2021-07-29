@@ -27,7 +27,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -50,9 +49,8 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     ResultSet rs;
     ArrayList<Sampah> arrsampah;
     NewJFrameMaster mst;
-    NewJFrame_transactionReport report;
-    boolean report_status=false;
     boolean master_status=false;
+    boolean report_status=false;
     private static final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     class LabelRenderer implements TableCellRenderer{
 
@@ -182,11 +180,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         LabelTotal.setText(total+"");
     }
     public boolean checkIcon(int index){
-<<<<<<< Updated upstream
-        if(index>=0&&index<=6){
-=======
-        if(index>0&&index<=6){
->>>>>>> Stashed changes
+        if(index>=0&&index<=5){
             return true;
         }else{
             return false;
@@ -226,7 +220,6 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         CBCategorySampah = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -246,7 +239,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         BAdd = new javax.swing.JButton();
         BSave = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        BTransHistory = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         LOGO = new javax.swing.JLabel();
         BNewCategory = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -362,11 +355,11 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("CUSTOMER");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 272, -1, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
         TFCustomer.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TFCustomer.setText("TFCustomer");
-        getContentPane().add(TFCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 160, 30));
+        getContentPane().add(TFCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 286, 160, 30));
 
         BAdd.setBackground(new java.awt.Color(0, 0, 0));
         BAdd.setForeground(new java.awt.Color(255, 255, 255));
@@ -392,15 +385,15 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         jLabel8.setText("Deskripsi");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
 
-        BTransHistory.setBackground(new java.awt.Color(0, 0, 0));
-        BTransHistory.setForeground(new java.awt.Color(255, 255, 255));
-        BTransHistory.setText("TRANSACTION HISTOY");
-        BTransHistory.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("TRANSACTION HISTOY");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTransHistoryActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(BTransHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 810, 220, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 810, 220, -1));
 
         LOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/kaumrombeng.png"))); // NOI18N
         getContentPane().add(LOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 320, -1));
@@ -446,7 +439,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         getContentPane().add(LabelIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
 
         UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/anonymoususer.png"))); // NOI18N
-        getContentPane().add(UserIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+        getContentPane().add(UserIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
         CategoryIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/garbageIcon.png"))); // NOI18N
         getContentPane().add(CategoryIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
@@ -490,7 +483,8 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        int input=JOptionPane.showConfirmDialog(rootPane, "yakin keluar min", "GET OUT!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        ImageIcon icon=new ImageIcon("src/format2.png");
+        int input=JOptionPane.showConfirmDialog(rootPane, "yakin keluar min?", "GET OUT!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, icon);
         if(input==1){
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         }else{
@@ -559,7 +553,6 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
             int idbaru = -1 ;
             ps = con.prepareStatement("INSERT INTO htrans (customer, total) VALUES ( ?, ?)",Statement.RETURN_GENERATED_KEYS);
             String nama=TFCustomer.getText();
-            if(nama.equals(""))nama="Anonymous";
             int total=Integer.parseInt(LabelSub.getText());
             ps.setString(1, nama);
             ps.setInt(2, total);
@@ -608,16 +601,13 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BNewCategoryActionPerformed
 
-    private void BTransHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTransHistoryActionPerformed
-        this.setVisible(false);
-        if(report_status==false)
-        {
-            report=new NewJFrame_transactionReport(this);
-            report.setVisible(true);
-            report_status=true;
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(report_status==false){
+            this.setVisible(false);
+            NewJFrame_transactionReport frm=new NewJFrame_transactionReport(this);
+            frm.setVisible(true);
         }
-        
-    }//GEN-LAST:event_BTransHistoryActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -659,7 +649,6 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BLogOut;
     private javax.swing.JButton BNewCategory;
     private javax.swing.JButton BSave;
-    private javax.swing.JButton BTransHistory;
     private javax.swing.JLabel Background;
     private javax.swing.JComboBox<String> CBCategorySampah;
     private javax.swing.JLabel CategoryIcon;
@@ -678,11 +667,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JTable TableBarang;
     private javax.swing.JLabel UserIcon;
     private javax.swing.JLabel WeightIcon;
-<<<<<<< Updated upstream
-=======
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
->>>>>>> Stashed changes
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
