@@ -38,9 +38,22 @@ public class NewJFrame_transactionDetail extends javax.swing.JFrame {
     int index;
     int idtransaksi;
     int row, column;
+    NewJFrame_transactionReport frmReport;
     /**
      * Creates new form NewJFrame_transactionDetail
      */
+    private static NewJFrame_transactionDetail obj = null;
+	         
+	    
+	    
+	    public  NewJFrame_transactionDetail getObj(NewJFrame_transactionReport param)
+	    {
+	        //jika belum maka barulah mengirimkan object new
+	        if(obj == null)
+	            obj = new NewJFrame_transactionDetail(frmReport);
+	        return obj;
+	    }
+    
     public NewJFrame_transactionDetail() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -54,7 +67,7 @@ public class NewJFrame_transactionDetail extends javax.swing.JFrame {
         loadTabel();
     }
     
-    NewJFrame_transactionReport frmReport;
+    
     public NewJFrame_transactionDetail(NewJFrame_transactionReport param) {
         try {
             Class.forName("com.mysql.jdbc.Driver");

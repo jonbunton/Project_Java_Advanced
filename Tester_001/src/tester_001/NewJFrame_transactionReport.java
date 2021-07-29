@@ -43,6 +43,17 @@ public class NewJFrame_transactionReport extends javax.swing.JFrame {
     int index;
     int idtransaksi;
     int row, column;
+private static NewJFrame_transactionReport obj = null;
+	         
+	    
+	    
+	    public  NewJFrame_transactionReport getObj()
+	    {
+	        //jika belum maka barulah mengirimkan object new
+	        if(obj == null)
+	            obj = new NewJFrame_transactionReport();
+	        return obj;
+	    }
     /**
      * Creates new form NewJFrame_transactionHistory
      */
@@ -283,7 +294,9 @@ public class NewJFrame_transactionReport extends javax.swing.JFrame {
             idtransaksi = Integer.parseInt(jTable1.getValueAt(row, 0).toString()) ;
             System.out.println(idtransaksi);
             NewJFrame_transactionDetail frm = new NewJFrame_transactionDetail(this);
-            frm.setVisible(true);
+            
+            frm.getObj(this).setVisible(true);
+        
         }
         
     }//GEN-LAST:event_jTable1MouseClicked
