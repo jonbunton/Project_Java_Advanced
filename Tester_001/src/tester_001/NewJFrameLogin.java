@@ -15,9 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class NewJFrameLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrameLogin
-     */
+    NewJFrameCredit cdr;
+    boolean credit_status=false;
     public NewJFrameLogin() {
         initComponents();
 //        ImageIcon pic = new ImageIcon("src/tester_001/lock.jpg");
@@ -53,6 +52,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         TFPassword = new javax.swing.JPasswordField();
         id = new javax.swing.JLabel();
         pass = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         BackGroundLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,6 +91,16 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         pass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/lock.jpg"))); // NOI18N
         getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel1.setText("Credit");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, -1));
+
         BackGroundLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/BackgroundLogin.jpg"))); // NOI18N
         getContentPane().add(BackGroundLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -113,6 +123,14 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     private void TFPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TFPasswordActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        if(credit_status==false){
+            cdr=new NewJFrameCredit(this);
+            cdr.setVisible(true);
+            credit_status=false;
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -155,6 +173,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     private javax.swing.JTextField TFUsername;
     private javax.swing.JLabel id;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel pass;
     // End of variables declaration//GEN-END:variables
 }
