@@ -94,7 +94,6 @@ public class NewJFrame_transactionDetail extends javax.swing.JFrame {
         for(DTrans d : arr){
             
             tm.addRow(d.getObj());
-            System.out.println(d.getObj());
         }
         jTable2.setDefaultEditor(Object.class, null);
         jTable2.setModel(tm);
