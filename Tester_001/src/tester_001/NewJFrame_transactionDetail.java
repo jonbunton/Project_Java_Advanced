@@ -115,10 +115,12 @@ public class NewJFrame_transactionDetail extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel_transactionID = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jButton_saveDetails = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,14 +135,21 @@ public class NewJFrame_transactionDetail extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(50, 260, 710, 180);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 31)); // NOI18N
         jLabel8.setText("TRANSACTION DETAILS");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(400, 140, 410, 80);
 
         jLabel1.setText("TRANSACTION ID : ");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(460, 220, 96, 14);
 
         jLabel_transactionID.setText("jLabel_transactionID");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/kaumrombeng.png"))); // NOI18N
+        getContentPane().add(jLabel_transactionID);
+        jLabel_transactionID.setBounds(590, 220, 209, 14);
 
         jButton_saveDetails.setText("SAVE DETAILS");
         jButton_saveDetails.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,45 +157,16 @@ public class NewJFrame_transactionDetail extends javax.swing.JFrame {
                 jButton_saveDetailsMouseClicked(evt);
             }
         });
+        getContentPane().add(jButton_saveDetails);
+        jButton_saveDetails.setBounds(50, 460, 101, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel_transactionID, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_saveDetails)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(jLabel2)))
-                .addContainerGap(93, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel_transactionID))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton_saveDetails)
-                .addGap(76, 76, 76))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/search.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(650, 0, 160, 150);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/Background_Det.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 800, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -264,6 +244,7 @@ public void writeFile(File f){
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel_transactionID;
     private javax.swing.JScrollPane jScrollPane2;
