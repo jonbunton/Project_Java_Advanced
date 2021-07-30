@@ -120,7 +120,6 @@ public class NewJFrame_transactionDetail extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,21 +134,12 @@ public class NewJFrame_transactionDetail extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(50, 260, 710, 180);
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 31)); // NOI18N
         jLabel8.setText("TRANSACTION DETAILS");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(400, 140, 410, 80);
 
         jLabel1.setText("TRANSACTION ID : ");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(460, 220, 96, 14);
 
         jLabel_transactionID.setText("jLabel_transactionID");
-        getContentPane().add(jLabel_transactionID);
-        jLabel_transactionID.setBounds(590, 220, 209, 14);
 
         jButton_saveDetails.setText("SAVE DETAILS");
         jButton_saveDetails.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,16 +147,52 @@ public class NewJFrame_transactionDetail extends javax.swing.JFrame {
                 jButton_saveDetailsMouseClicked(evt);
             }
         });
-        getContentPane().add(jButton_saveDetails);
-        jButton_saveDetails.setBounds(50, 460, 101, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/search.png"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(650, 0, 160, 150);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/Background_Det.png"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 800, 550);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(400, 400, 400)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(460, 460, 460)
+                .addComponent(jLabel1)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel_transactionID, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jButton_saveDetails))
+            .addComponent(jLabel2)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel_transactionID))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton_saveDetails))
+            .addComponent(jLabel2)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
