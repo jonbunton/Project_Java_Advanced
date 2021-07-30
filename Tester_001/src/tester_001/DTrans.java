@@ -42,7 +42,7 @@ public class DTrans {
         formatRp.setGroupingSeparator('.');
 
         kursIndonesia.setDecimalFormatSymbols(formatRp);
-        Object[] o = {this.barang,this.harga, this.jumlah, kursIndonesia.format(subtotal)};
+        Object[] o = {this.barang,kursIndonesia.format(harga) + "/ Kg", this.jumlah + " Kg", kursIndonesia.format(subtotal)};
         return o;
     }
     
@@ -95,7 +95,7 @@ public class DTrans {
         formatRp.setGroupingSeparator('.');
 
         kursIndonesia.setDecimalFormatSymbols(formatRp);
-        return  barang + "~" + harga + "~" + jumlah  + "~" + kursIndonesia.format(subtotal);
+        return  barang + "~" + kursIndonesia.format(harga) + "/ Kg~" + jumlah + " Kg~" + kursIndonesia.format(subtotal);
     }
     
     
