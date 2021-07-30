@@ -68,7 +68,7 @@
               <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
               <Component id="jDateChooser4" min="-2" pref="231" max="-2" attributes="0"/>
           </Group>
-          <Component id="jLabel2" min="-2" pref="940" max="-2" attributes="0"/>
+          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">

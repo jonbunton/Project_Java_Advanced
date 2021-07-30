@@ -89,7 +89,8 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         boolean temp=true;
         for (int i = 0; i < val.length(); i++) {
             char x=val.charAt(i);
-            if(x<48&&x>57){
+            int ascii=x;
+            if(ascii<48||ascii>57){
                 temp=false;
                 break;
             }
@@ -314,6 +315,9 @@ public class NewJFrameMaster extends javax.swing.JFrame {
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e.getMessage());
                     }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Inputan Harga hanya boleh Angka");
+                    TFHarga.setText("");
                 }
             }
             else

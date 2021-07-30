@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -51,6 +53,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     NewJFrameMaster mst;
     boolean master_status=false;
     boolean report_status=false;
+    int TOTAL=0;
     private static final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     class LabelRenderer implements TableCellRenderer{
 
@@ -59,8 +62,8 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
             String photoname=o.toString();
             ImageIcon icon=new ImageIcon(photoname);
             TableColumn tc=TableBarang.getColumn("Icon");
-            tc.setMinWidth(100);
-            tc.setMaxWidth(100);
+            tc.setMinWidth(150);
+            tc.setMaxWidth(150);
             TableBarang.setRowHeight(100);
             return new JLabel(icon);
         }
@@ -104,30 +107,39 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         for(DTrans d:arr)
         {
             String barang=d.getBarang();
-            int harga=d.getHarga();
+            String harga=currencyformat(d.getHarga());
             int jumlah=d.getJumlah();
             String icon=d.getIcon();
-            int subtotal=d.getSubtotal();
+            int stotal=d.getSubtotal();
+            String subtotal=currencyformat(d.getSubtotal());
             Object[] obj = {barang,harga,jumlah,icon,subtotal};
             tm.addRow(obj);
-            total+=subtotal;
+            total+=stotal;
         }
-        LabelSub.setText(Integer.toString(total));
+        TOTAL=total;
+        currencyformat(LabelSub, total);
         TableBarang.setModel(tm);
         TableColumn tc=TableBarang.getColumn("Icon");
         TableBarang.getColumnModel().getColumn(3).setCellRenderer(new LabelRenderer());
     }
+    public void resetinput()
+    {
+        LabelTotal.setText("0");
+        Object berat=0;
+        SBerat.setValue(berat);
+        CBCategorySampah.setSelectedIndex(0);
+        
+    }
     public void resetData()
     {
         LabelHargaKat.setText(arrsampah.get(0).getHarga()+"");
+        LabelSub.setText("0");
+        TOTAL=0;
         String[] title={"Kategori","Harga","Berat","Icon","Subtot"};
         tm=new DefaultTableModel(title,0);      
         TableBarang.setModel(tm);
-        LabelSub.setText("0");
-        LabelTotal.setText("0");
-        CBCategorySampah.setSelectedIndex(0);
+        resetinput();
         arr = new ArrayList<DTrans>();
-        
         refreshTable();
     }
     public void setSampah()
@@ -173,14 +185,41 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         }
         cb.setModel(cm);
     }
-    public void setLabelTotal(){
+    public void setLabelTotal(int harga){
         int value=(int)SBerat.getValue();
-        int harga=Integer.parseInt(LabelHargaKat.getText());
         int total=harga*value;
-        LabelTotal.setText(total+"");
+//        LabelTotal.setText(total+"");
+//        System.out.println(total+"");
+        currencyformat(LabelTotal,total);
+    }
+    public String currencyformat(int money)
+    {
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp. ");
+        formatRp.setMonetaryDecimalSeparator(',');
+        formatRp.setGroupingSeparator('.');
+
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
+        return kursIndonesia.format(money);
+//        return kursIndonesia.format(money)+"";
+    }
+    public void currencyformat(JLabel label,int money)
+    {
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp. ");
+        formatRp.setMonetaryDecimalSeparator(',');
+        formatRp.setGroupingSeparator('.');
+
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
+        label.setText((String) kursIndonesia.format(money));
+//        return kursIndonesia.format(money)+"";
     }
     public boolean checkIcon(int index){
-        if(index>=0&&index<=5){
+        if(index>0&&index<=6){
             return true;
         }else{
             return false;
@@ -199,7 +238,8 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     public String PassingData(){
         String temp_id="";
         String temp_kategori=CBCategorySampah.getSelectedItem().toString();
-        String harga=LabelHargaKat.getText();
+        int idx=getIndexArr(temp_kategori);
+        String harga=arrsampah.get(idx).getHarga()+"";
         String keterangan=LabelKeterangan.getText();
         int index=-1;
         for (int i = 0; i < arrsampah.size(); i++) {
@@ -255,9 +295,6 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         WeightIcon = new javax.swing.JLabel();
         PriceIcon = new javax.swing.JLabel();
         SubTotalIcon = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         PriceIcon1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
@@ -286,7 +323,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(CBCategorySampah, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 346, 159, 30));
 
-        TableBarang.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TableBarang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         TableBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -305,7 +342,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel3.setText("LIST SAMPAH");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 550, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 550, -1, -1));
 
         BLogOut.setBackground(new java.awt.Color(0, 0, 0));
         BLogOut.setForeground(new java.awt.Color(255, 255, 255));
@@ -343,7 +380,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         LabelTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LabelTotal.setText("LabelTotal");
-        getContentPane().add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, -1, -1));
+        getContentPane().add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Subtotal :");
@@ -351,7 +388,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         LabelSub.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LabelSub.setText("0");
-        getContentPane().add(LabelSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, -1, -1));
+        getContentPane().add(LabelSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 570, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("CUSTOMER");
@@ -414,7 +451,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         LabelHargaKat.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         LabelHargaKat.setText("0");
-        getContentPane().add(LabelHargaKat, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, -1, -1));
+        getContentPane().add(LabelHargaKat, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, -1, -1));
 
         LabelKatDesc.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         LabelKatDesc.setText("LabelKatDesc");
@@ -453,23 +490,11 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         SubTotalIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/subtotal.png"))); // NOI18N
         getContentPane().add(SubTotalIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setText("Rp.");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 570, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel10.setText("Rp.");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, -1, -1));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel15.setText("Rp.");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
-
         PriceIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/price.png"))); // NOI18N
         getContentPane().add(PriceIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/checklist.png"))); // NOI18N
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, -1, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 550, -1, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/BackgroundAdmin.jpg"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 840));
@@ -484,7 +509,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         ImageIcon icon=new ImageIcon("src/format2.png");
-        int input=JOptionPane.showConfirmDialog(rootPane, "yakin keluar min?", "GET OUT!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, icon);
+        int input=JOptionPane.showConfirmDialog(rootPane, "yakin keluar min?", "EXIT!", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, icon);
         if(input==1){
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         }else{
@@ -509,7 +534,9 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         if(checkIcon(id)){
             LabelIcon.setIcon(new ImageIcon("src/tester_001/"+ CBCategorySampah.getSelectedIndex()+".png"));
         }else LabelIcon.setIcon(new ImageIcon("src/tester_001/"+"default"+".png"));
-        LabelHargaKat.setText(arrsampah.get(idx).getHarga()+"");
+//        LabelHargaKat.setText(arrsampah.get(idx).getHarga()+"");
+//        System.out.println(arrsampah.get(idx).getHarga()+"");
+        currencyformat(LabelHargaKat, arrsampah.get(idx).getHarga());
         LabelKatDesc.setText(CBCategorySampah.getSelectedItem().toString());
         String data[]=arrsampah.get(idx).getKeterangan().split(" ");
         String newket="";
@@ -521,27 +548,29 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
             }
         }
         LabelKeterangan.setText(newket);
-        setLabelTotal();
+        setLabelTotal(arrsampah.get(idx).getHarga());
         if(master_status)mst.RefreshTextField(mst);
     }//GEN-LAST:event_CBCategorySampahItemStateChanged
 
     private void BAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAddActionPerformed
         String sampah = CBCategorySampah.getSelectedItem().toString();
-        int harga = Integer.parseInt(LabelHargaKat.getText());
+        String harga = LabelHargaKat.getText();
         int berat = (int) SBerat.getValue();
-        int index=CBCategorySampah.getSelectedIndex();
+        int idx=getIndexArr(sampah);
+        int id=arrsampah.get(idx).getId();
+        int price=arrsampah.get(idx).getHarga();
         if(checkSpinner(berat)){
             String icon;
-            if(checkIcon(index))icon="src/tester_001/"+CBCategorySampah.getSelectedIndex()+".png";
+            if(checkIcon(id))icon="src/tester_001/"+CBCategorySampah.getSelectedIndex()+".png";
             else icon="src/tester_001/default.png";
-            int subtotal = harga * berat;
+            int subtotal = price * berat;
 
-            DTrans obj = new DTrans(sampah, harga, berat,icon, subtotal);
+            DTrans obj = new DTrans(sampah, price, berat,icon, subtotal);
             arr.add(obj);
-
             refreshTable();
+            resetinput();
         }else{
-            JOptionPane.showMessageDialog(null, "Berat Tidak Boleh Kurang Dari 1 Kg");
+            JOptionPane.showMessageDialog(null, "Berat Tidak Boleh Kurang Dari 1 Kg","WARNING!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_BAddActionPerformed
 
@@ -549,34 +578,40 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 //        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 //        System.out.println(sdf3.format(timestamp));
         try {
-            con.setAutoCommit(false);
-            int idbaru = -1 ;
-            ps = con.prepareStatement("INSERT INTO htrans (customer, total) VALUES ( ?, ?)",Statement.RETURN_GENERATED_KEYS);
-            String nama=TFCustomer.getText();
-            int total=Integer.parseInt(LabelSub.getText());
-            ps.setString(1, nama);
-            ps.setInt(2, total);
-//            ps.setTimestamp(3, timestamp);
-            ps.executeUpdate();
-            
-            ResultSet rs= ps.getGeneratedKeys();
-            if(rs.next()){
-                //dapetin IDHTRANS,yang bertepatan di column pertama
-                idbaru=rs.getInt(1);
-            }
-            if(idbaru!=-1){
-                for(int i=0;i<arr.size();i++)
-                {
-                    ps = con.prepareStatement("insert into dtrans(idhtrans,kategory,harga,berat) values(?,?,?,?)");
-                    ps.setInt(1, idbaru);
-                    ps.setString(2, arr.get(i).getBarang());
-                    ps.setInt(3, arr.get(i).getHarga() );
-                    ps.setInt(4, arr.get(i).getJumlah() );
-                    ps.executeUpdate();
+            int total=TOTAL;
+            if(total!=0)
+            {
+                con.setAutoCommit(false);
+                int idbaru = -1 ;
+                ps = con.prepareStatement("INSERT INTO htrans (customer, total) VALUES ( ?, ?)",Statement.RETURN_GENERATED_KEYS);
+                String nama=TFCustomer.getText();
+                if(nama.equals(""))nama="Anonymous";
+                ps.setString(1, nama);
+                ps.setInt(2, total);
+    //            ps.setTimestamp(3, timestamp);
+                ps.executeUpdate();
+
+                ResultSet rs= ps.getGeneratedKeys();
+                if(rs.next()){
+                    //dapetin IDHTRANS,yang bertepatan di column pertama
+                    idbaru=rs.getInt(1);
                 }
-                con.commit();
-                resetData();
-                TFCustomer.setText("");
+                if(idbaru!=-1){
+                    for(int i=0;i<arr.size();i++)
+                    {
+                        ps = con.prepareStatement("insert into dtrans(idhtrans,kategory,harga,berat) values(?,?,?,?)");
+                        ps.setInt(1, idbaru);
+                        ps.setString(2, arr.get(i).getBarang());
+                        ps.setInt(3, arr.get(i).getHarga() );
+                        ps.setInt(4, arr.get(i).getJumlah() );
+                        ps.executeUpdate();
+                    }
+                    con.commit();
+                    resetData();
+                    TFCustomer.setText("");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Tidak ada transaksi min", "WARNING", JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception ex) {
             
@@ -590,7 +625,9 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BSaveActionPerformed
 
     private void SBeratStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SBeratStateChanged
-        setLabelTotal();
+        String item=CBCategorySampah.getSelectedItem().toString();
+        int idx=getIndexArr(item);
+        setLabelTotal(arrsampah.get(idx).getHarga());
     }//GEN-LAST:event_SBeratStateChanged
 
     private void BNewCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNewCategoryActionPerformed
@@ -669,12 +706,10 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel WeightIcon;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -683,7 +718,6 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables

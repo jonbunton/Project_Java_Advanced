@@ -85,7 +85,6 @@ public class DTrans {
     public void setSubtotal(int subtotal) {
         this.subtotal = subtotal;
     }
-
     @Override
     public String toString() {
         DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
