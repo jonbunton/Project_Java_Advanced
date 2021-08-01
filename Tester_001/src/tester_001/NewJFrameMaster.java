@@ -37,6 +37,8 @@ public class NewJFrameMaster extends javax.swing.JFrame {
     ResultSet rs;
     NewJFrameAdmin admin;
     NewJFrameMaster master;
+    NewJFrameListSampah ls;
+    boolean status_list=false;
     public NewJFrameMaster() {
         initComponents();
         master=this;
@@ -79,6 +81,15 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         m.TFHarga.setText(data[2]);
         m.TA.setText(data[3]);
     }
+    public void RefreshTextField(NewJFrameMaster m,String value)
+    {
+        String hasilpassing=value;
+        String data[]=hasilpassing.split("~");
+        m.TFId.setText(data[0]);
+        m.TFNama.setText(data[1]);
+        m.TFHarga.setText(data[2]);
+        m.TA.setText(data[3]);
+    }
     public boolean check1()
     {
         if(TFNama.getText().equals("")||TFHarga.getText().equals("")||TA.getText().equals(""))return false;
@@ -89,8 +100,7 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         boolean temp=true;
         for (int i = 0; i < val.length(); i++) {
             char x=val.charAt(i);
-            int ascii=x;
-            if(ascii<48||ascii>57){
+            if(x<48&&x>57){
                 temp=false;
                 break;
             }
@@ -102,6 +112,10 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         TFNama.setText("");
         TFHarga.setText("");
         TA.setText("");
+    }
+    public void checkFrameListSampah()
+    {
+        if(status_list)ls.refreshtable();
     }
 //    public void setIcon(){
 //        UIManager UI=new UIManager();
@@ -137,6 +151,7 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         IconNama = new javax.swing.JLabel();
         IconHarga = new javax.swing.JLabel();
         IconDeskripsi = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         BG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -221,16 +236,26 @@ public class NewJFrameMaster extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         IconID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/id.png"))); // NOI18N
-        getContentPane().add(IconID, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, -1));
+        getContentPane().add(IconID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
 
         IconNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/garbageIcon.png"))); // NOI18N
-        getContentPane().add(IconNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, -1));
+        getContentPane().add(IconNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
         IconHarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/price.png"))); // NOI18N
-        getContentPane().add(IconHarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
+        getContentPane().add(IconHarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
 
         IconDeskripsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/checklist.png"))); // NOI18N
-        getContentPane().add(IconDeskripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
+        getContentPane().add(IconDeskripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 60, -1));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/background2.jpg"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -275,6 +300,7 @@ public class NewJFrameMaster extends javax.swing.JFrame {
                 ps.executeUpdate();
                 reset();
                 admin.setSampah();
+                checkFrameListSampah();
                 JOptionPane.showMessageDialog(null, "Sukses Add Sampah");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
@@ -315,9 +341,7 @@ public class NewJFrameMaster extends javax.swing.JFrame {
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e.getMessage());
                     }
-                }else{
-                    JOptionPane.showMessageDialog(null, "Inputan Harga hanya boleh Angka");
-                    TFHarga.setText("");
+                    checkFrameListSampah();
                 }
             }
             else
@@ -343,6 +367,7 @@ public class NewJFrameMaster extends javax.swing.JFrame {
                         ps.executeUpdate();
                         reset();
                         admin.setSampah();
+                        checkFrameListSampah();
                         JOptionPane.showMessageDialog(null, "Sukses Delete Sampah");
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e.getMessage());
@@ -359,6 +384,14 @@ public class NewJFrameMaster extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ID Tidak Boleh Kosong","WARNING!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_BDeleteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(!status_list){
+            ls=new NewJFrameListSampah(this, admin);
+            ls.setVisible(true);
+            status_list=true;
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -408,6 +441,7 @@ public class NewJFrameMaster extends javax.swing.JFrame {
     private javax.swing.JTextField TFHarga;
     private javax.swing.JTextField TFId;
     private javax.swing.JTextField TFNama;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
