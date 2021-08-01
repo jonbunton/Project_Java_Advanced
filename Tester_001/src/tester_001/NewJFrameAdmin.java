@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -104,12 +106,20 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         int total=0;
         for(DTrans d:arr)
         {
+            DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+            formatRp.setCurrencySymbol("Rp. ");
+            formatRp.setMonetaryDecimalSeparator(',');
+            formatRp.setGroupingSeparator('.');
+            kursIndonesia.setDecimalFormatSymbols(formatRp);
+
             String barang=d.getBarang();
             int harga=d.getHarga();
             int jumlah=d.getJumlah();
             //String icon=d.getIcon();
             int subtotal=d.getSubtotal();
-            Object[] obj = {barang,harga,jumlah,subtotal};
+            Object[] obj = {barang,kursIndonesia.format(harga),jumlah + " Kg",kursIndonesia.format(subtotal)};
             tm.addRow(obj);
             total+=subtotal;
         }
@@ -354,7 +364,6 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         jLabel5.setText("CUSTOMER NAME : ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 180, 30));
 
-        TFCustomer.setEditable(false);
         TFCustomer.setBackground(new java.awt.Color(255, 255, 255));
         TFCustomer.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TFCustomer.setText("TFCustomer");
@@ -577,6 +586,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
                 con.commit();
                 resetData();
                 TFCustomer.setText("");
+                SBerat.setValue(0);
             }
         } catch (Exception ex) {
             
@@ -614,6 +624,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         resetData();
         refreshTable();
         TFCustomer.setText("");
+        SBerat.setValue(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
