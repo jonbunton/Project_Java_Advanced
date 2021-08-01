@@ -81,10 +81,10 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         refreshTable();
         setSampah();
 //        settingComboBoxSampah(CBKategorySampah);
-        LabelKeterangan.setText(getKeteranganSampah(0));
+//        LabelKeterangan.setText(getKeteranganSampah(0));
         //LabelKatDesc.setText(CBCategorySampah.getSelectedItem().toString());
         LabelHargaKat.setText(arrsampah.get(0).getHarga()+"");
-        LabelNamaSampah.setText(CBCategorySampah.getSelectedItem().toString());
+//        LabelNamaSampah.setText(CBCategorySampah.getSelectedItem().toString());
         //LabelIcon.setIcon(new ImageIcon("src/tester_001/0.png"));
         reset();
     }
@@ -97,7 +97,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         SBerat.setValue(obj);
     }
     public void refreshTable(){
-        String[] title={"Kategori","Harga","Berat","Subtot"};
+        String[] title={"CATEGORY","PRICE","WEIGHT","SUBTOTAL"};
         tm=new DefaultTableModel(title,0);
         TableBarang.setModel(tm);
         TableBarang.setDefaultEditor(Object.class, null);
@@ -201,7 +201,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         String temp_id="";
         String temp_kategori=CBCategorySampah.getSelectedItem().toString();
         String harga=LabelHargaKat.getText();
-        String keterangan=LabelKeterangan.getText();
+//        String keterangan=LabelKeterangan.getText();
         int index=-1;
         for (int i = 0; i < arrsampah.size(); i++) {
             if(arrsampah.get(i).getKategori().equals(CBCategorySampah.getSelectedItem().toString()))
@@ -211,7 +211,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
                 break;
             }
         }
-        return temp_id+"~"+temp_kategori+"~"+harga+"~"+keterangan;
+        return temp_id+"~"+temp_kategori+"~"+harga+"~"/*+keterangan*/;
     }
     public boolean checkSpinner(int val){
         if(val>0)return true;
@@ -244,9 +244,6 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         BNewCategory = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         LabelHargaKat = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        LabelKeterangan = new javax.swing.JTextArea();
         UserIcon = new javax.swing.JLabel();
         CategoryIcon = new javax.swing.JLabel();
         WeightIcon = new javax.swing.JLabel();
@@ -259,7 +256,6 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         PriceIcon1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        LabelNamaSampah = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -275,7 +271,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("HALO ADMIN");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
 
         CBCategorySampah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         CBCategorySampah.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -284,7 +280,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
                 CBCategorySampahItemStateChanged(evt);
             }
         });
-        getContentPane().add(CBCategorySampah, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 159, 30));
+        getContentPane().add(CBCategorySampah, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 580, 30));
 
         TableBarang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TableBarang.setModel(new javax.swing.table.DefaultTableModel(
@@ -301,29 +297,30 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         TableBarang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(TableBarang);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 820, 190));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 600, 820, 190));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setText("LIST SAMPAH");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, -1, -1));
+        jLabel3.setText("RECYCLABLE ITEMS");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, -1, -1));
 
-        BLogOut.setBackground(new java.awt.Color(0, 0, 0));
-        BLogOut.setForeground(new java.awt.Color(255, 255, 255));
+        BLogOut.setBackground(new java.awt.Color(255, 102, 51));
+        BLogOut.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BLogOut.setForeground(new java.awt.Color(255, 255, 234));
         BLogOut.setText("LOG OUT");
         BLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BLogOutActionPerformed(evt);
             }
         });
-        getContentPane().add(BLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 130, -1));
+        getContentPane().add(BLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 260, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("KATEGORI");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
+        jLabel4.setText("CATEGORY       :");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel12.setText("WEIGHT");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+        jLabel12.setText("WEIGHT           :");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 150, -1));
 
         SBerat.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         SBerat.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -331,159 +328,150 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
                 SBeratStateChanged(evt);
             }
         });
-        getContentPane().add(SBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 80, 30));
+        getContentPane().add(SBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 540, 30));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel13.setText("Kg");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel13.setText("KG");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 390, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel14.setText("TOTAL");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
+        jLabel14.setText("SUBTOTAL        :");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, -1, -1));
 
         LabelTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LabelTotal.setText("LabelTotal");
-        getContentPane().add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
+        getContentPane().add(LabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 520, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("SUBTOTAL :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 730, -1, -1));
+        jLabel2.setText("TOTAL : ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 810, -1, -1));
 
         LabelSub.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LabelSub.setText("0");
-        getContentPane().add(LabelSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 730, -1, -1));
+        getContentPane().add(LabelSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 810, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("CUSTOMER");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 730, -1, -1));
+        jLabel5.setText("CUSTOMER NAME : ");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 180, 30));
 
+        TFCustomer.setEditable(false);
+        TFCustomer.setBackground(new java.awt.Color(255, 255, 255));
         TFCustomer.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TFCustomer.setText("TFCustomer");
-        getContentPane().add(TFCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 730, 140, 30));
+        getContentPane().add(TFCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 350, 30));
 
         BAdd.setBackground(new java.awt.Color(0, 0, 0));
-        BAdd.setForeground(new java.awt.Color(255, 255, 255));
-        BAdd.setText("Add");
+        BAdd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BAdd.setForeground(new java.awt.Color(255, 255, 234));
+        BAdd.setText("ADD");
         BAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BAddActionPerformed(evt);
             }
         });
-        getContentPane().add(BAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 320, -1));
+        getContentPane().add(BAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 820, -1));
 
         BSave.setBackground(new java.awt.Color(0, 0, 0));
-        BSave.setForeground(new java.awt.Color(255, 255, 255));
-        BSave.setText("Save");
+        BSave.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BSave.setForeground(new java.awt.Color(255, 255, 234));
+        BSave.setText("SAVE");
         BSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(BSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 770, 820, -1));
+        getContentPane().add(BSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 850, 400, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 153));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("TRANSACTION HISTOY");
+        jButton1.setBackground(new java.awt.Color(0, 255, 153));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 234));
+        jButton1.setText("TRANSACTION HISTORY");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 210, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 260, -1));
 
         LOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/kaumrombeng.png"))); // NOI18N
-        getContentPane().add(LOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 310, 190));
+        getContentPane().add(LOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 310, 190));
 
-        BNewCategory.setBackground(new java.awt.Color(0, 153, 153));
-        BNewCategory.setForeground(new java.awt.Color(255, 255, 255));
-        BNewCategory.setText("Add New Category");
+        BNewCategory.setBackground(new java.awt.Color(51, 153, 255));
+        BNewCategory.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BNewCategory.setForeground(new java.awt.Color(255, 255, 234));
+        BNewCategory.setText("ADD NEW CATEGORY");
         BNewCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BNewCategoryActionPerformed(evt);
             }
         });
-        getContentPane().add(BNewCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 210, 30));
+        getContentPane().add(BNewCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 260, 30));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
-        jLabel11.setText("Harga per Kg :");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, -1, -1));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel11.setText("PRICE PER KG : ");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, -1));
 
-        LabelHargaKat.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        LabelHargaKat.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LabelHargaKat.setText("0");
-        getContentPane().add(LabelHargaKat, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 380, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
-        jLabel7.setText("Keterangan Sampah");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
-
-        LabelKeterangan.setColumns(20);
-        LabelKeterangan.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        LabelKeterangan.setRows(5);
-        jScrollPane1.setViewportView(LabelKeterangan);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 251, 380, 110));
+        getContentPane().add(LabelHargaKat, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 530, -1));
 
         UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/anonymoususer.png"))); // NOI18N
-        getContentPane().add(UserIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 720, -1, -1));
+        getContentPane().add(UserIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
 
         CategoryIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/garbageIcon.png"))); // NOI18N
-        getContentPane().add(CategoryIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        getContentPane().add(CategoryIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
         WeightIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/weight01.png"))); // NOI18N
-        getContentPane().add(WeightIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        getContentPane().add(WeightIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
 
         PriceIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/price.png"))); // NOI18N
-        getContentPane().add(PriceIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, -1, -1));
+        getContentPane().add(PriceIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
 
         SubTotalIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/subtotal.png"))); // NOI18N
-        getContentPane().add(SubTotalIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 720, -1, -1));
+        getContentPane().add(SubTotalIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 790, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Rp.");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 730, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 810, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Rp.");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel15.setText("Rp.");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Batal Transaksi");
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 234));
+        jButton2.setText("CANCEL TRANSACTION");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 480, 130, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 850, 390, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Batal Item");
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 234));
+        jButton3.setText("DELETE ITEM");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, 110, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 550, 130, -1));
 
         PriceIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/price.png"))); // NOI18N
-        getContentPane().add(PriceIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+        getContentPane().add(PriceIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/checklist.png"))); // NOI18N
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, -1, -1));
-
-        LabelNamaSampah.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
-        LabelNamaSampah.setText("nama");
-        getContentPane().add(LabelNamaSampah, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, -1, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, -1, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tester_001/BackgroundAdmin.jpg"))); // NOI18N
-        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 840));
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 910, 1040));
 
         pack();
         setLocationRelativeTo(null);
@@ -522,7 +510,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
 //        }else LabelIcon.setIcon(new ImageIcon("src/tester_001/"+"default"+".png"));
         LabelHargaKat.setText(arrsampah.get(idx).getHarga()+"");
         //LabelKatDesc.setText(CBCategorySampah.getSelectedItem().toString());
-        LabelNamaSampah.setText(item);
+//        LabelNamaSampah.setText(item);
         String data[]=arrsampah.get(idx).getKeterangan().split(" ");
         String newket="";
         for (int i = 0; i < data.length; i++) {
@@ -532,7 +520,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
                 newket+="\n";
             }
         }
-        LabelKeterangan.setText(newket);
+//        LabelKeterangan.setText(newket);
         setLabelTotal();
         if(master_status)mst.RefreshTextField(mst);
     }//GEN-LAST:event_CBCategorySampahItemStateChanged
@@ -625,13 +613,19 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         resetData();
         refreshTable();
+        TFCustomer.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         int indexNya = TableBarang.getSelectedRow();
-        arr.remove(indexNya);
-        refreshTable();
+        if(indexNya==-1){
+            JOptionPane.showMessageDialog(rootPane, "There hasn't been any data selected!");
+        }
+        else{
+            arr.remove(indexNya);
+            refreshTable();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -679,8 +673,6 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel CategoryIcon;
     private javax.swing.JLabel LOGO;
     private javax.swing.JLabel LabelHargaKat;
-    private javax.swing.JTextArea LabelKeterangan;
-    private javax.swing.JLabel LabelNamaSampah;
     private javax.swing.JLabel LabelSub;
     private javax.swing.JLabel LabelTotal;
     private javax.swing.JLabel PriceIcon;
@@ -706,9 +698,7 @@ public class NewJFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
